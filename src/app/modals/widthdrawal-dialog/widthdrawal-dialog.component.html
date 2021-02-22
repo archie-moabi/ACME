@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Enter Amount</h1>
+<div mat-dialog-content>
+  <p>
+    Available Amount: {{ availableAmount | number: "1.2-2" | currency: "ZAR " }}
+  </p>
+  <div *ngIf="errorMessage" class="mat-error" style="font-size: 75%">
+    {{ errorMessage }}
+  </div>
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="amount" autocomplete="off" class="example-right-align">
+    <span matPrefix>R&nbsp;</span>
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="accent" (click)="onConfirm()" [disabled]="amount <= 0">
+    Confirm
+  </button>
+</div>
